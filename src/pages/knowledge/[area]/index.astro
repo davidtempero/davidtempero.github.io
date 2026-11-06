@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import EntryList from '../../../components/EntryList.astro';
+import { areas, byOrder, type Area } from '../../../lib/content';
+export function getStaticPaths() { return areas.map(area => ({ params: { area: area.id }, props: { area } })); }
+interface Props { area: Area; }
+const { area } = Astro.props;
+const entries = (await getCollection('knowledge', entry => entry.data.area === area.id)).sort(byOrder);
+---
+<BaseLayout title={area.title} description={area.description}>
+  <Breadcrumbs items={[{ label: 'Knowledge', href: '/knowledge/' }, { label: area.title }]} />
+  <section class="page-intro"><span class="eyebrow">KNOWLEDGE / {area.number}</span><h1>{area.title}</h1><p class="lead">{area.description}</p></section>
+  <section class="topic-index" aria-labelledby="topics-heading"><div class="section-heading"><h2 id="topics-heading">Explore the topics</h2><span class="small-note">{entries.length} {entries.length === 1 ? 'collection' : 'collections'}</span></div><EntryList entries={entries} /></section>
+  <nav class="area-switcher" aria-label="Other knowledge areas">{areas.filter(item => item.id !== area.id).map(item => <a class="text-link" href={`/knowledge/${item.id}/`}>{item.title} →</a>)}</nav>
+</BaseLayout>

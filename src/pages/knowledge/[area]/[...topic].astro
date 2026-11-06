@@ -1,0 +1,11 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+export async function getStaticPaths() {
+  return (await getCollection('knowledge')).map(entry => ({ params: { area: entry.data.area, topic: entry.id.split('/').slice(1).join('/') }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'knowledge'>; }
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+---
+<ArticleLayout entry={entry} headings={headings}><Content /></ArticleLayout>

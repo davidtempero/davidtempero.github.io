@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AreaCards from '../../components/AreaCards.astro';
+---
+<BaseLayout title="Knowledge">
+  <Breadcrumbs items={[{ label: 'Knowledge' }]} />
+  <section class="page-intro"><span class="eyebrow">THE KNOWLEDGE LIBRARY</span><h1>Notes worth keeping.</h1><p class="lead">A collection of references, learning resources, and tools. Pick an area and explore the topics inside.</p></section>
+  <section class="section-block" aria-labelledby="areas-heading"><h2 id="areas-heading" class="visually-hidden">Explore by area</h2><AreaCards /></section>
+  <div class="callout"><div><h2>Where ideas meet hardware.</h2><p>Looking for keyboard designs, controllers, firmware, and parts?</p></div><a class="text-link" href="/projects/split-keyboards/">Visit the workbench →</a></div>
+</BaseLayout>

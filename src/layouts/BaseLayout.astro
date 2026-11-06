@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = 'David Tempero’s projects, technical notes, and useful discoveries across programming, electronics, and computing.' } = Astro.props;
+const current = Astro.url.pathname === '/404/' ? '/404.html' : Astro.url.pathname;
+const nav = [{ href: '/knowledge/', label: 'Knowledge' }, { href: '/projects/', label: 'Projects' }, { href: '/about/', label: 'About' }];
+const active = (href: string) => current.startsWith(href);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === 'Home' ? 'David Tempero — Notes & projects' : `${title} · David Tempero`}</title>
+    <meta name="description" content={description} />
+    {current === '/404.html' && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={new URL(current, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#126b60" />
+    <meta property="og:title" content={`${title} · David Tempero`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(current, Astro.site)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="brand" href="/" aria-label="David Tempero, home"><span class="brand-mark" aria-hidden="true">dt.</span> David Tempero</a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        {nav.map(item => <a href={item.href} aria-current={active(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        <a class="github-link" href="https://github.com/davidtempero">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <details class="mobile-nav">
+        <summary>Menu <span aria-hidden="true">+</span></summary>
+        <nav aria-label="Mobile navigation">{nav.map(item => <a href={item.href} aria-current={active(item.href) ? 'page' : undefined}>{item.label}</a>)}<a href="https://github.com/davidtempero">GitHub ↗</a></nav>
+      </details>
+    </header>
+    <main id="main" class="shell" tabindex="-1"><slot /></main>
+    <footer class="site-footer shell">
+      <div><a href="/" class="footer-name">David Tempero</a><p>A place to learn, collect, and build.</p></div>
+      <div class="footer-links"><a href="/about/">About</a><a href="https://github.com/davidtempero">GitHub ↗</a><span>© {new Date().getUTCFullYear()} David Tempero</span></div>
+    </footer>
+  </body>
+</html>

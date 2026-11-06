@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import KeyboardDrawing from '../../components/KeyboardDrawing.astro';
+import EntryList from '../../components/EntryList.astro';
+import { byOrder } from '../../lib/content';
+const entries = (await getCollection('projects')).sort(byOrder);
+---
+<BaseLayout title="Projects">
+  <Breadcrumbs items={[{ label: 'Projects' }]} />
+  <section class="page-intro"><span class="eyebrow">THE WORKBENCH</span><h1>Ideas to build on.</h1><p class="lead">A place for hands-on interests, design explorations, and the resources that help connect software to hardware.</p></section>
+  <section class="project-index" aria-labelledby="projects-heading"><div class="project-banner"><KeyboardDrawing /></div><h2 id="projects-heading">Project collections</h2><EntryList entries={entries} /></section>
+</BaseLayout>

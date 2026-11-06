@@ -1,0 +1,9 @@
+---
+import { areas } from '../lib/content';
+---
+<div class="area-grid">
+  {areas.map(area => <a class="area-card" href={`/knowledge/${area.id}/`}>
+    <div class="card-top"><span class="code-mark" aria-hidden="true">{area.mark}</span><span class="index-number">{area.number}</span></div>
+    <h3>{area.title}<span aria-hidden="true">↗</span></h3><p>{area.description}</p><span class="card-topics">{area.topics}</span>
+  </a>)}
+</div>

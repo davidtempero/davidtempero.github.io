@@ -1,0 +1,6 @@
+---
+import { entryUrl, formatDate, type Entry } from '../lib/content';
+interface Props { entries: Entry[]; dates?: boolean; }
+const { entries, dates = false } = Astro.props;
+---
+<ul class="entry-list">{entries.map(entry => <li><a href={entryUrl(entry)}><div><h3>{entry.data.title}</h3><p>{entry.data.description}</p></div><span class="entry-end">{dates && <time datetime={entry.data.updated.toISOString()}>{formatDate(entry.data.updated)}</time>}<span aria-hidden="true">↗</span></span></a></li>)}</ul>

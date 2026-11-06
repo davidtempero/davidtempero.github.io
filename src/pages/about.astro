@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+<BaseLayout title="About" description="A little about David Tempero and the interests behind this collection of notes and projects.">
+  <Breadcrumbs items={[{ label: 'About' }]} />
+  <section class="page-intro"><span class="eyebrow">THE PERSON BEHIND THE NOTES</span><h1>Hello, I’m David.</h1><p class="lead">I’m interested in how software and hardware come together—and in learning something new along the way.</p></section>
+  <div class="about-grid"><div class="prose"><h2>A place for my curiosity</h2><p>This site is my collection of technical resources, ideas, and project notes. It brings together the things I return to: programming languages, electronics, and hands-on explorations.</p><h2>What you’ll find here</h2><p>My programming notes range from C++ and Rust to Python, software design, and ways to practise. In electronics, I collect resources for KiCad, PCB design, and CAD.</p><p>Split mechanical keyboards are one of the places those interests meet. My project resources cover designs such as Corne and ErgoDash, controllers, firmware, and parts suppliers.</p><h2>Learning in public</h2><p>This is a growing notebook. Some pages are a starting point; others are longer collections of references. I keep them here so they’re easier to find, revisit, and share.</p><a class="text-link" href="https://github.com/davidtempero">Find me on GitHub <span aria-hidden="true">↗</span></a></div><aside class="about-aside"><span class="eyebrow">CURRENT THREADS</span><ul><li><span>01</span> Programming & software design</li><li><span>02</span> Electronics & PCB design</li><li><span>03</span> Split mechanical keyboards</li></ul><a class="text-link" href="/knowledge/">Explore the notebook →</a></aside></div>
+</BaseLayout>
