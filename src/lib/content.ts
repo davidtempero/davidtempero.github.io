@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 export const areas = [
   { id: 'programming', title: 'Programming', number: '01', mark: '</>', description: 'Languages, software design, and the practice of writing code.', topics: 'C++ · Rust · Python · Learning' },
   { id: 'electronics', title: 'Electronics', number: '02', mark: '⌁', description: 'From a circuit idea to a board, with a little mechanical design along the way.', topics: 'KiCad · PCB design · CAD' },
-  { id: 'computing', title: 'Computing', number: '03', mark: '{ }', description: 'Exploring security, cloud platforms, and artificial intelligence.', topics: 'Security · Cloud · AI' },
+  { id: 'computing', title: 'Computing', number: '03', mark: '{ }', description: 'Security, cloud platforms, artificial intelligence, and agentic engineering.', topics: 'Security · Cloud · AI · Agents' },
 ] as const;
 
 export type Area = (typeof areas)[number];

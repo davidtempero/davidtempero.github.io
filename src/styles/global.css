@@ -133,6 +133,12 @@
   .prose li { margin-block: .55rem; color: var(--muted); }
   .prose li p { margin-block: .2rem .7rem; }
   .prose a { color: var(--teal); }
+  .prose .repo-card { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: .9rem; padding: 1rem; margin-block: .85rem; border: 1px solid var(--line); background: var(--wash); border-radius: 3px; }
+  .prose .repo-card img { width: 2.5rem; height: 2.5rem; border-radius: 50%; }
+  .prose .repo-card h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+  .prose .repo-card p { margin: 0; color: var(--muted); }
+  .prose .repo-meta { display: flex; flex-wrap: wrap; gap: .55rem 1rem; margin-top: .65rem; color: var(--ink); font: .72rem/1.4 var(--mono); }
+  .prose .repo-meta span { white-space: nowrap; }
   .prose table { border-collapse: collapse; width: 100%; font-size: .85rem; margin-block: 1.5rem; table-layout: fixed; }
   .prose th, .prose td { padding: .75rem; text-align: left; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
   .prose th { background: var(--wash); color: var(--ink); font-weight: 600; }
